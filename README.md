@@ -1,4 +1,3 @@
-
 # ZED RTAB-Map SLAM
 
 ![Land Scan](media/land_scan.gif)
@@ -140,3 +139,22 @@ You can inspect and export maps from the database using:
 ```bash
 rtabmap-databaseViewer
 ```
+
+## My Use Case
+
+This project is part of a larger system that uses a **Holybro X500 V2 drone** to map forested areas for the purpose of  **reforestation** . For this, I combined this repository with drone control through  **QGroundControl (QGC)** , as illustrated below.
+
+![QGC](media/qgc.png)
+
+I also developed a post-processing tool to identify ideal seeding points using two different techniques:
+
+* **Color filtering** (`3d_color_filtering.ipynb`)
+![option01](media/option01.png)
+* **Open3D-ML object detection** (`vegetation_detection.ipynb`)
+![option02](media/option02.png)
+
+Both methods extract seeding point locations in the form of **(x, y, z)** coordinates, which can then be transferred and used by the repository:
+
+👉 **[holybro_drone_simulation_ros2](https://github.com/ainhoaarnaiz/holybro_drone_simulation_ros2)**
+
+Additionally, this repository allows you to convert `.ply` files into `.bt` OctoMap files, which can be used for navigation purposes.
